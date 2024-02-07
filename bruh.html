@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Monthsary Surprise</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <!-- Font Awesome CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <!-- Custom CSS -->
+  <style>
+    body {
+      background-image: url('https://via.placeholder.com/1200x800'); /* Replace with your background image URL */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    .container {
+      text-align: center;
+      margin-top: 50px;
+    }
+    h1 {
+      color: #fff; /* White color for text */
+    }
+    .gif-cat-heart {
+      width: 500px; /* Adjust size as needed */
+    }
+    .btn-group {
+      margin-top: 20px;
+    }
+    #noBtn {
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <img src="https://media.giphy.com/media/JlfsRBeSVD3uA9shIU/giphy.gif" alt="Cute cat with heart" class="gif-cat-heart">
+  <div class="btn-group">
+    <button id="yesBtn" class="btn btn-danger mr-3"><i class="fas fa-heart"></i> Yes</button>
+    <button id="noBtn" class="btn btn-dark" disabled><i class="fas fa-times"></i> No</button>
+  </div>
+</div>
+
+<audio id="bgMusic" autoplay loop>
+  <source src="https://www.soundjay.com/button/beep-02.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<!-- Bootstrap JS -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Custom JavaScript -->
+<script>
+  $(document).ready(function(){
+    // Function to move the "No" button away from the cursor
+    function moveNoButton(e) {
+      var moveX = (e.pageX * 5 / 20);
+      var moveY = (e.pageY * 5 / 20);
+      $('#noBtn').css('margin-left', moveX + 'px');
+      $('#noBtn').css('margin-top', moveY + 'px');
+    }
+
+    // When the mouse moves over the "No" button, move it away
+    $('#noBtn').mousemove(function(e){
+      moveNoButton(e);
+    });
+
+    // When the mouse moves anywhere in the document, keep moving the "No" button
+    $(document).mousemove(function(e) {
+      moveNoButton(e);
+    });
+
+    // When "Yes" button is clicked
+    $('#yesBtn').click(function(){
+      surpriseMessage();
+    });
+
+    // Surprise message function
+    function surpriseMessage() {
+      setTimeout(function() {
+        alert("Happy Monthsary, Wabie!");
+        window.location.href = "https://example.com/sweet-message"; // Redirect to another page after the surprise message
+      }, 2000); // Delay the surprise message for 2 seconds
+    }
+  });
+</script>
+
+</body>
+</html>
